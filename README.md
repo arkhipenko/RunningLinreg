@@ -61,9 +61,14 @@ and a list of error codes is below:
 #define LINREG_DEN      (-3) //  denominator is zero
 ```
 
+### Practical applications
+
+- Peak detection
+- PID control 
+
+
+
 **Enjoy!**
-
-
 
 
 
