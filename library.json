@@ -1,0 +1,22 @@
+{
+  "name": "RunningLinreg",
+  "keywords": "signal, processing",
+  "description": "Implementation of dynamic MSE linear regression f(t)",
+  "repository":
+  {
+    "type": "git",
+    "url": "https://github.com/arkhipenko/RunningLinreg"
+  },
+  "authors":
+  [
+    {
+      "name": "Anatoli Arkhipenko",
+      "email": "arkhipenko@hotmail.com",
+      "url": "https://github.com/arkhipenko",
+      "maintainer": true
+    }
+  ],
+  "version": "1.0.0",
+  "frameworks": "arduino",
+  "platforms": "*"
+}

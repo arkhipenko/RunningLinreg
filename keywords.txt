@@ -1,0 +1,30 @@
+#######################################
+# Syntax Coloring Map For TaskManager
+#######################################
+
+#######################################
+# Datatypes (KEYWORD1)
+#######################################
+
+RunningLinreg	KEYWORD1
+point_t KEYWORD1
+
+#######################################
+# Methods and Functions (KEYWORD2)
+#######################################
+
+addPoint	KEYWORD2
+count	KEYWORD2
+initialize	KEYWORD2
+intercept	KEYWORD2
+slope	KEYWORD2
+status	KEYWORD2
+
+#######################################
+# Constants (LITERAL1)
+#######################################
+
+LINREG_OK LITERAL1
+LINREG_ERR LITERAL1
+LINREG_NUL LITERAL1
+LINREG_DEN LITERAL1
