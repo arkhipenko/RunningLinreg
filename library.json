@@ -1,6 +1,6 @@
 {
   "name": "RunningLinreg",
-  "version": "2.0.0",
+  "version": "2.0.1",
   "description": "Least-squares line (slope and intercept) over the last n points, updated in constant time per point",
   "keywords": ["linear regression", "least squares", "slope", "trend", "signal processing"],
   "repository":
@@ -19,5 +19,12 @@
   ],
   "license": "BSD-3-Clause",
   "frameworks": "arduino",
-  "platforms": "*"
+  "platforms": "*",
+  "dependencies":
+  [
+    {
+      "name": "RngBuffer",
+      "version": "https://github.com/arkhipenko/RngBuffer.git#v2.0.0"
+    }
+  ]
 }

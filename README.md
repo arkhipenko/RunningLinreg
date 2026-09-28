@@ -1,7 +1,7 @@
 # Running Linreg
 
 ### Least-squares line over the last n points, updated in constant time
-##### Version 2.0.0
+##### Version 2.0.1
 
 ### Description
 
@@ -18,7 +18,7 @@ Two details keep the result accurate over long runs:
 
 ### Requirements
 
-- The RngBuffer library, version 2.0.0 or later (github.com/arkhipenko/RngBuffer). It holds the window of points. It is not published yet, so install it from a local copy: with PlatformIO, add its folder to `lib_extra_dirs` or use `lib_deps = symlink://path/to/RngBuffer`; with the Arduino IDE, copy its folder into your `libraries` folder.
+- The RngBuffer library, version 2.0.0 or later (github.com/arkhipenko/RngBuffer). It holds the window of points. PlatformIO installs it from GitHub with RunningLinreg (declared in `library.json`). With the Arduino IDE, download it from GitHub and copy its folder into your `libraries` folder.
 - A C++11 compiler (the default for Arduino cores).
 
 ### Usage
@@ -113,9 +113,14 @@ The window takes `n * sizeof(point_t)` bytes: 8 bytes per point on AVR and 16 on
 
 ###### Changelog:
 
+v2.0.1:
+
+- 2026-09-28
+- RngBuffer declared as a PlatformIO dependency in `library.json`, taken from GitHub at tag v2.0.0
+
 v2.0.0:
 
-- unreleased
+- 2026-09-27
 - accurate with large `t` and over long runs (sums relative to a moving reference, refreshed every n points)
 - window kept in the RngBuffer library instead of a caller-owned `std::queue`: builds on AVR
 - new `window()`, `full()` and status `LINREG_FEW`; `count()` returns `size_t`

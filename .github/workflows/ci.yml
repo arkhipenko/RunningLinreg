@@ -4,7 +4,6 @@
 # - Arduino Lint with the Library Manager submission checks
 #
 # The RngBuffer library is fetched from github.com/arkhipenko/RngBuffer.
-# That repository is not published yet, so these jobs fail until it is.
 
 name: CI
 
