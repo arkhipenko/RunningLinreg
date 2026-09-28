@@ -1,0 +1,73 @@
+# Continuous integration for RunningLinreg
+# - host unit tests (tests/) with AddressSanitizer and UndefinedBehaviorSanitizer
+# - example sketches compiled for AVR, SAMD and ESP32
+# - Arduino Lint with the Library Manager submission checks
+#
+# The RngBuffer library is fetched from github.com/arkhipenko/RngBuffer.
+# That repository is not published yet, so these jobs fail until it is.
+
+name: CI
+
+on:
+  push:
+    branches: [main, testing]
+  pull_request:
+    branches: [main]
+  workflow_dispatch:
+
+jobs:
+  host-tests:
+    name: Host tests (${{ matrix.compiler }}, ${{ matrix.std }})
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        compiler: [g++, clang++]
+        std: [gnu++11, c++17, c++20]
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/checkout@v7
+        with:
+          repository: arkhipenko/RngBuffer
+          path: RngBuffer
+      - name: Build and run
+        run: make -C tests CXX=${{ matrix.compiler }} STD=${{ matrix.std }} RNGBUFFER_DIR=$GITHUB_WORKSPACE/RngBuffer/src
+
+  examples:
+    name: Examples (${{ matrix.fqbn }})
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - fqbn: arduino:avr:uno
+            platforms: |
+              - name: arduino:avr
+          - fqbn: arduino:samd:mkrzero
+            platforms: |
+              - name: arduino:samd
+          - fqbn: esp32:esp32:esp32
+            platforms: |
+              - name: esp32:esp32
+                source-url: https://espressif.github.io/arduino-esp32/package_esp32_index.json
+    steps:
+      - uses: actions/checkout@v7
+      - uses: arduino/compile-sketches@v1
+        with:
+          fqbn: ${{ matrix.fqbn }}
+          platforms: ${{ matrix.platforms }}
+          libraries: |
+            - source-path: ./
+            - source-url: https://github.com/arkhipenko/RngBuffer.git
+          sketch-paths: |
+            - examples
+
+  lint:
+    name: Arduino Lint
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+      - uses: arduino/arduino-lint-action@v3
+        with:
+          project-type: library
+          library-manager: submit

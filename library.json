@@ -1,7 +1,8 @@
 {
   "name": "RunningLinreg",
-  "keywords": "signal, processing",
-  "description": "Implementation of dynamic MSE linear regression f(t)",
+  "version": "2.0.0",
+  "description": "Least-squares line (slope and intercept) over the last n points, updated in constant time per point",
+  "keywords": ["linear regression", "least squares", "slope", "trend", "signal processing"],
   "repository":
   {
     "type": "git",
@@ -16,7 +17,7 @@
       "maintainer": true
     }
   ],
-  "version": "1.0.0",
+  "license": "BSD-3-Clause",
   "frameworks": "arduino",
   "platforms": "*"
 }

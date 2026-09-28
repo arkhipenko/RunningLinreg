@@ -1,0 +1,14 @@
+# Claude Code and Design Central (local tooling, not part of the library)
+.claude/
+.dc/
+.mcp.json
+CLAUDE.md
+CLAUDE.local.md
+claude-start
+
+# Local scratch folders
+_*/
+
+# Test build output
+tests/test_runninglinreg
+tests/RngBuffer.o
